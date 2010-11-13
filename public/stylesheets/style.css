@@ -1,4 +1,4 @@
-/* colors coffee:#190B00 cream:#F9EFCD */
+/* colors coffee: #E6CA8E cream: #190B00 */
 
 body {background: #080602;}
 
@@ -33,13 +33,28 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 #header {height: 50px;}
-#section {margin-top: 10px; background-color: #E6CA8E;}
+
+#section {margin-top: 10px; background-color: #E6CA8E; padding: 20px;}
 
 .round {
   -moz-border-radius:    0.4em;
   -webkit-border-radius: 0.4em;
   border-radius:         0.4em;
 }
+
+a.signup_button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  width: 190px;
+  color: #E6CA8E;
+  background: #190B00;
+  font-size: 150%;
+  font-weight: bold;
+  padding: 20px;
+}
+
 
 #footer {text-align: center; font-size: 0.7em;}
 
