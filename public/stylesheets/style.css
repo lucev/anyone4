@@ -1,0 +1,59 @@
+/* colors coffee:#190B00 cream:#F9EFCD */
+
+body {background: #080602;}
+
+.container {width: 780px; margin: auto;}
+
+nav {float: right; background-color: #E6CA8E;}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+  font-size: 0.9em;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  padding: 0 5px;
+  font-weight: bold;
+  text-decoration:none;
+  color: #190B00;
+}
+
+nav ul li a:visited {
+  color: #190B00;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+#header {height: 50px;}
+#section {margin-top: 10px; background-color: #E6CA8E;}
+
+.round {
+  -moz-border-radius:    0.4em;
+  -webkit-border-radius: 0.4em;
+  border-radius:         0.4em;
+}
+
+#footer {text-align: center; font-size: 0.7em;}
+
+#footer ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+
+#footer ul li a {
+  padding: 0 5px;
+  font-weight: bold;
+  text-decoration:underline;
+  color: #E6CA8E;
+}
+
+
