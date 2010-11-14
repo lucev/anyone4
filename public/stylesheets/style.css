@@ -1,4 +1,4 @@
-/* colors coffee: #E6CA8E cream: #190B00 */
+/* colors coffee: #E6CA8E cream: #E6CA8E */
 
 body {background: #080602;}
 
@@ -71,4 +71,5 @@ a.signup_button {
   color: #E6CA8E;
 }
 
+#debug {color: #E6CA8E;}
 
