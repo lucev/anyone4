@@ -11,27 +11,19 @@
 <body>
 
   <div class="container">
-    <div id="header">
-      <nav class="round">
-        <ul>
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Sign in", '#' %></li>          
-        </ul>
-      </nav>
-    </div>
+  
+    <%= render 'layouts/header' %>
     
     <div id="section" class="round">
       <%= yield %>
     </div>
     
-    <div id="footer">
-        <ul>
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "About", about_path %></li>
-          <li><%= link_to "Contact", contact_path %></li>          
-        </ul>
+    <%= render 'layouts/footer' %>
+
+    <div id="debug">
+      <%= debug(params) if Rails.env.development? %>
     </div>
-  
+        
   </div>
 </body>
 </html>
