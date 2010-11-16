@@ -6,8 +6,10 @@
         <%= render 'shared/activity_form' %>
       </td>
       <td class="sidebar round">
-        <%= render 'shared/user_info' %>
-      </td>
+      <strong>Name</strong> <%= link_to current_user.name, @user %><br />
+      <strong>Location</strong> <%= current_user.location %><br />
+      <strong>Activities</strong> <%= current_user.activities.count %>
+    </td>
     </tr>
   </table>
 <% else %>
