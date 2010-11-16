@@ -1,0 +1,4 @@
+  <strong>Name</strong> <%= link_to current_user.name, @user %><br />
+  <strong>Location</strong> <%= current_user.location %><br />
+  <%= pluralize(current_user.activities.count, "activity") %>
+

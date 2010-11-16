@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
     @title = "Home"
+    @activity = Activity.new if signed_in?
   end
   
   def about

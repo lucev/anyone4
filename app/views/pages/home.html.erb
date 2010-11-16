@@ -1,4 +1,16 @@
-<h1>Welcome to Anyone4?</h1>
-<% if !signed_in? %>
+<% if signed_in? %>
+  <table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+        <h1 class="activity">What's up?</h1>
+        <%= render 'shared/activity_form' %>
+      </td>
+      <td class="sidebar round">
+        <%= render 'shared/user_info' %>
+      </td>
+    </tr>
+  </table>
+<% else %>
+  <h1>Welcome to Anyone4?</h1>
   <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
 <% end %>

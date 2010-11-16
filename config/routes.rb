@@ -2,6 +2,7 @@ AnyoneFor::Application.routes.draw do
   
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :activities, :only => [:create, :destroy]
 
   root :to => 'pages#home'
   match '/about', :to => 'pages#about'

@@ -4,10 +4,17 @@
       <h1>
         <%= @user.name %>
       </h1>
+      <% unless @user.activities.empty? %>
+        <table class="activities" summary="User activities">
+          <%= render @activities %>
+        </table>
+        <%= will_paginate @activities %>
+      <% end %>
     </td>
     <td class="sidebar round">
       <strong>Name</strong> <%= link_to @user.name, @user %><br />
-      <strong>Location</strong> <%= @user.location %>
+      <strong>Location</strong> <%= @user.location %><br />
+      <strong>Activities</strong> <%= @user.activities.count %>
     </td>
   </tr>
 </table>
