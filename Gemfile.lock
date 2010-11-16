@@ -34,10 +34,11 @@ GEM
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    faker (0.3.1)
     i18n (0.4.2)
-    mail (2.2.9)
+    mail (2.2.9.1)
       activesupport (>= 2.3.6)
-      i18n (~> 0.4.1)
+      i18n (>= 0.4.1)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
@@ -66,11 +67,14 @@ GEM
     treetop (1.4.8)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
+    will_paginate (3.0.pre2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   annotate-models (= 1.0.4)
+  faker (= 0.3.1)
   rails (= 3.0.1)
   sqlite3-ruby
+  will_paginate (= 3.0.pre2)

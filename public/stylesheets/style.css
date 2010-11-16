@@ -144,3 +144,7 @@ div.field, div.actions {
 .flash_error {color: maroon;}
 .flash_success {color: darkgreen;}
 .flash_success {color: #080602;}
+
+ul.users {margin-top: 1em;}
+
+.users li {list-style: none;}
