@@ -141,6 +141,6 @@ div.field, div.actions {
   font-size: 12px;
 }
 
-.flash_error {color: maroon; }
+.flash_error {color: maroon;}
 .flash_success {color: darkgreen;}
-
+.flash_success {color: #080602;}
