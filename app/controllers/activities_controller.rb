@@ -11,7 +11,6 @@ class ActivitiesController < ApplicationController
     end
   end
 
-
   def destroy
   end
 end

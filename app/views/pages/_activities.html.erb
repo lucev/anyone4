@@ -1,0 +1,12 @@
+<% @activities.each do |activity| %>
+  <tr>
+    <td>
+      <strong><%= activity.user.name %></strong>
+      <span class="timestamp">
+        <%= time_ago_in_words(activity.created_at) %> ago.
+      </span><br />
+      <%= activity.title %>
+    </td>
+  </tr>
+<% end %>
+
