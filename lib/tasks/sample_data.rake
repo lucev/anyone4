@@ -8,7 +8,7 @@ namespace :db do
                  :email => "lucev.ivan@gmail.com",
                  :password => "foobar",
                  :password_confirmation => "foobar")
-    admin.toggle!(:admin)                 
+    admin.toggle!(:admin)
     99.times do |n|
       name  = Faker::Name.name
       email = "example-#{n+1}@railstutorial.org"
@@ -20,12 +20,13 @@ namespace :db do
                    :password => password,
                    :password_confirmation => password)
     end
-    
+
     User.all(:limit => 6).each do |user|
       50.times do
-        user.activities.create!(:title => Faker::Lorem.sentence(5))
+        user.activities.create!(:title => Faker::Lorem.words(2))
       end
     end
 
   end
 end
+

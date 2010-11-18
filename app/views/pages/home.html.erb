@@ -15,6 +15,7 @@
   <table>
     <%= render :partial => "activities" %>
   </table>
+  <%= will_paginate @activities %>
 <% else %>
   <h1>Welcome to Anyone4?</h1>
   <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
