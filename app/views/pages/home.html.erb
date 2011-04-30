@@ -9,13 +9,14 @@
       <strong>Name</strong> <%= link_to current_user.name, @user %><br />
       <strong>Location</strong> <%= current_user.location %><br />
       <strong>Activities</strong> <%= current_user.activities.count %>
+      <%= render :partial => "shared/stats" %>
     </td>
     </tr>
   </table>
   <table>
     <%= render :partial => "activities" %>
   </table>
-  <%= will_paginate @activities %>
+  <%= will_paginate @feed_items %>
 <% else %>
   <h1>Welcome to Anyone4?</h1>
   <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>

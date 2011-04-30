@@ -4,6 +4,7 @@
       <h1>
         <%= @user.name %>
       </h1>
+      <%= render 'follow_form' if signed_in? %>
       <% unless @user.activities.empty? %>
         <table class="activities" summary="User activities">
           <%= render @activities %>
@@ -14,7 +15,9 @@
     <td class="sidebar round">
       <strong>Name</strong> <%= link_to @user.name, @user %><br />
       <strong>Location</strong> <%= @user.location %><br />
-      <strong>Activities</strong> <%= @user.activities.count %>
+      <strong>Activities</strong> <%= @user.activities.count %><br />
+      <%= render 'shared/stats' %>
     </td>
   </tr>
 </table>
+
