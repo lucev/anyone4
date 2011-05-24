@@ -2,12 +2,13 @@
   <% unless !activity.starts_at.nil? and activity.starts_at.past? %>
     <tr>
       <td>
-        <strong><%= activity.title %></strong>
+        <strong><%= link_to activity.title, activity %></strong>
         <%= activity.title %>
         <%= activity.location %>
         <% unless activity.starts_at.nil? %>
           <%= activity.starts_at.strftime("%c") %>
         <% end %>
+        <%= render :partial => "activities/attend_form", :locals => {:activity => activity} %>
       </td>
     </tr>
   <% end %>

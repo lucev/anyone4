@@ -1,0 +1,6 @@
+<%= @activity.title %>&nbsp;<%= render :partial => 'attend_form', :locals => {:activity => @activity} %>
+<%= @activity.location %><br/>
+<% @activity.participants.each do |participant| %>
+  <%= link_to participant.name, participant %><br/>
+<% end %>
+

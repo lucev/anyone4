@@ -1,12 +1,14 @@
 AnyoneFor::Application.routes.draw do
 
+  resources :comments
+
   resources :users do
     member do
       get :following, :followers
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :activities, :only => [:create, :destroy]
+  resources :activities, :only => [:create, :destroy, :show]
   resources :relationships, :only => [:create, :destroy]
 
 
@@ -17,6 +19,8 @@ AnyoneFor::Application.routes.draw do
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  match '/activities/attend', :to => 'activities#attend', :as => :activity_attend
+  match '/activities/miss', :to => 'activities#miss', :as => :activity_miss
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

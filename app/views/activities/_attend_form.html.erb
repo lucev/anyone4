@@ -1,0 +1,12 @@
+<% if activity.attending? current_user %>
+  <% form_tag "#{activity_miss_path}" do %>
+    <%= hidden_field_tag 'activity_id', activity.id %>
+    <%= submit_tag 'Miss' %>
+  <% end %>
+<% else %>
+  <% form_tag "#{activity_attend_path}" do %>
+    <%= hidden_field_tag 'activity_id', activity.id %>
+    <%= submit_tag 'Attend' %>
+  <% end %>
+<% end %>
+
