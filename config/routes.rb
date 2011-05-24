@@ -21,6 +21,7 @@ AnyoneFor::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
   match '/activities/attend', :to => 'activities#attend', :as => :activity_attend
   match '/activities/miss', :to => 'activities#miss', :as => :activity_miss
+  match 'activities/create_comment', :to => 'activities#create_comment'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

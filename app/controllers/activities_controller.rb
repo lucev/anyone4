@@ -4,6 +4,7 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:id])
     @title = @activity.title
+    @comment = Comment.new
   end
 
   def create
@@ -36,6 +37,15 @@ class ActivitiesController < ApplicationController
       format.html { redirect_to activity_path(@activity) }
       format.xml  { render :xml => @activity }
     end
+  end
+
+  def create_comment
+    @comment  = Comment.new(params[:comment])
+    @comment.user_id = current_user.id
+    if @comment.save
+      flash[:success] = "Comment added!"
+      redirect_to activity_path(params[:comment][:activity_id])
+  end
   end
 end
 

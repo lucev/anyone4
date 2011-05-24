@@ -4,3 +4,17 @@
   <%= link_to participant.name, participant %><br/>
 <% end %>
 
+<% unless @activity.comments.empty? %>
+  <% @activity.comments.each do |comment| %>
+    <%= comment.content %><br/>
+    <%= link_to comment.author.name, comment.author %><br/>
+  <% end %>
+<% end %>
+
+<% form_for @comment, :url => { :controller => 'activities', :action => "create_comment" } do |f| %>
+  <%= f.label :content, 'Leave comment' %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field :activity_id, {:value => @activity.id} %>
+  <%= f.submit 'Post' %>
+<% end %>
+

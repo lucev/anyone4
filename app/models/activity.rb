@@ -2,9 +2,9 @@ class Activity < ActiveRecord::Base
   attr_accessible :title, :location, :description, :starts_at, :ends_at
 
   belongs_to :user
-  has_many :participations
+  has_many :participations, :dependent => :destroy
   has_many :participants, :through => :participations, :source => :user
-  has_many :comments
+  has_many :comments, :dependent => :destroy
 
   validates :title, :presence => true, :length => { :maximum => 60 }
   validates :user_id, :presence => true

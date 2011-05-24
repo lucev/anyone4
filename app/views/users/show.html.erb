@@ -5,7 +5,7 @@
         <%= @user.name %>
       </h1>
       <%= render 'follow_form' if signed_in? %>
-      <% unless @user.activities.empty? %>
+      <% unless @user.activities.nil? or @user.activities.empty? %>
         <table class="activities" summary="User activities">
           <%= render @activities %>
         </table>

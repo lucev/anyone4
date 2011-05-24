@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :location, :password, :password_confirmation
 
   has_many :activities, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
   has_many :relationships, :foreign_key => "follower_id",
                            :dependent => :destroy
   has_many :following, :through => :relationships, :source => :followed
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
 
   has_many :followers, :through => :reverse_relationships, :source => :follower
 
-  has_many :participations
+  has_many :participations, :dependent => :destroy
   has_many :attendances, :through => :participations, :source => :activity
 
 
