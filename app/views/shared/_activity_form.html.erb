@@ -1,9 +1,27 @@
 <%= form_for @activity do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
-    <%= f.text_area :title %>
+    <table>
+      <tr>
+        <td><%= f.label :title, 'What' %></td>
+        <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :starts_at, 'Time' %></td>
+        <td><%= f.datetime_select :starts_at %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :location, 'Where' %></td>
+        <td><%= f.text_field :location %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :description, 'Details' %></td>
+        <td><%= f.text_area :description %></td>
+      </tr>
+    </table>
   </div>
   <div class="actions">
     <%= f.submit "Submit" %>
   </div>
 <% end %>
+

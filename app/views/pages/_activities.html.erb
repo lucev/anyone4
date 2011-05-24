@@ -1,12 +1,15 @@
 <% @feed_items.each do |activity| %>
-  <tr>
-    <td>
-      <strong><%= activity.user.name %></strong>
-      <span class="timestamp">
-        <%= time_ago_in_words(activity.created_at) %> ago.
-      </span><br />
-      <%= activity.title %>
-    </td>
-  </tr>
+  <% unless !activity.starts_at.nil? and activity.starts_at.past? %>
+    <tr>
+      <td>
+        <strong><%= activity.title %></strong>
+        <%= activity.title %>
+        <%= activity.location %>
+        <% unless activity.starts_at.nil? %>
+          <%= activity.starts_at.strftime("%c") %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
 <% end %>
 

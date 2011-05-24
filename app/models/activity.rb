@@ -1,5 +1,5 @@
 class Activity < ActiveRecord::Base
-  attr_accessible :title
+  attr_accessible :title, :location, :description, :starts_at, :ends_at
 
   belongs_to :user
 

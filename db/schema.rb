@@ -10,13 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110410030246) do
+ActiveRecord::Schema.define(:version => 20110524151624) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.string   "location"
   end
 
   add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
