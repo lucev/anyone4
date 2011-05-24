@@ -196,6 +196,13 @@ form.new_activity {
 }
 
 form.new_activity textarea {
-  height: 4em;
+  height: 5em;
+  width: 20em;
   margin-bottom: 0;
 }
+
+form.comment textarea {
+  height: 5em;
+  width: 20em;
+}
+

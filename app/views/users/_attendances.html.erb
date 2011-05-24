@@ -1,7 +1,9 @@
-<% unless @user.attendances.empty? %>
+<% unless @user.attendances.nil? or @user.attendances.empty? %>
   <% @user.attendances.each do |activity| %>
     <%= link_to activity.title, activity %><br/>
-    <%= activity.starts_at.strftime("%c") %><br/>
+    <% unless activity.starts_at.nil? %>
+      <%= activity.starts_at.strftime("%c") %><br/>
+    <% end %>
   <% end %>
 <% end %>
 

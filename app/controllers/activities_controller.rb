@@ -24,7 +24,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find_by_id(params[:activity_id])
     @activity.participants.push(current_user)
     respond_to do |format|
-      format.html { redirect_to activity_path(@activity) }
+      format.html { redirect_to :back }
       format.xml  { render :xml => @activity }
     end
   end
@@ -34,7 +34,7 @@ class ActivitiesController < ApplicationController
     participation = @activity.participations.find_by_user_id(current_user.id)
     @activity.participations.delete(participation)
     respond_to do |format|
-      format.html { redirect_to activity_path(@activity) }
+      format.html { redirect_to :back }
       format.xml  { render :xml => @activity }
     end
   end

@@ -1,16 +1,22 @@
-<% @feed_items.each do |activity| %>
-  <% unless !activity.starts_at.nil? and activity.starts_at.past? %>
-    <tr>
-      <td>
-        <strong><%= link_to activity.title, activity %></strong>
-        <%= activity.title %>
-        <%= activity.location %>
-        <% unless activity.starts_at.nil? %>
-          <%= activity.starts_at.strftime("%c") %>
+<table>
+  <% @feed_items.each do |activity| %>
+    <% unless !activity.starts_at.nil? and activity.starts_at.past? %>
+      <tr>
+        <td>
+          <strong><%= link_to activity.title, activity %></strong><br/>
+          <%= link_to activity.owner.name, activity.owner %><br/>
+          <% unless activity.starts_at.nil? %>
+            <%= activity.starts_at.strftime("%c") %><br/>
+          <% end %>
+          <%= activity.location %><br/>
+        </td>
+        <% unless activity.owner? current_user %>
+          <td>
+            <%= render :partial => "activities/attend_form", :locals => {:activity => activity} %>
+          </td>
         <% end %>
-        <%= render :partial => "activities/attend_form", :locals => {:activity => activity} %>
-      </td>
-    </tr>
+      </tr>
+    <% end %>
   <% end %>
-<% end %>
+</table>
 

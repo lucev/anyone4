@@ -1,20 +1,44 @@
-<%= @activity.title %>&nbsp;<%= render :partial => 'attend_form', :locals => {:activity => @activity} %>
-<%= @activity.location %><br/>
-<% @activity.participants.each do |participant| %>
-  <%= link_to participant.name, participant %><br/>
+<% if @activity.owner? current_user %>
+  <p>You suggested</p>
+<% else %>
+  <p><%= link_to @activity.owner.name, @activity.owner %>&nbsp;suggested</p>
 <% end %>
-
-<% unless @activity.comments.empty? %>
-  <% @activity.comments.each do |comment| %>
-    <%= comment.content %><br/>
-    <%= link_to comment.author.name, comment.author %><br/>
+<h1><%= @activity.title %></h1>
+<% unless @activity.starts_at.nil? %>
+  <p>Time: <%= @activity.starts_at.strftime("%c") %></p>
+<% end %>
+<% unless @activity.location.nil? or @activity.location.empty? %>
+  <p>Location: <%= @activity.location %></p>
+<% end %>
+<% unless @activity.description.nil? or @activity.description.empty? %>
+  <p>Details: <br/>
+     <%= @activity.description %>
+  </p>
+<% end %>
+<% unless @activity.owner? current_user %>
+  <%= render :partial => 'attend_form', :locals => {:activity => @activity} %>
+<% end %>
+<% unless @activity.participants.nil? or @activity.participants.empty? %>
+  <p>Already confirmed</p>
+  <% @activity.participants.each do |participant| %>
+    <%= link_to participant.name, participant %><br/>
   <% end %>
 <% end %>
 
-<% form_for @comment, :url => { :controller => 'activities', :action => "create_comment" } do |f| %>
-  <%= f.label :content, 'Leave comment' %>
-  <%= f.text_area :content %>
+<% unless @activity.comments.nil? or @activity.comments.empty? %>
+  <div>
+    <p>Comments</p>
+    <% @activity.comments.each do |comment| %>
+      <%= link_to comment.author.name, comment.author %><br/>
+      <%= comment.content %><br/>
+    <% end %>
+  </div>
+<% end %>
+<br/>
+<% form_for @comment, :url => { :controller => 'activities', :action => "create_comment" },
+                      :html => {:class => 'comment'} do |f| %>
+  <%= f.text_area :content %><br/>
   <%= f.hidden_field :activity_id, {:value => @activity.id} %>
-  <%= f.submit 'Post' %>
+  <%= f.submit 'Comment' %>
 <% end %>
 

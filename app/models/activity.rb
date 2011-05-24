@@ -24,6 +24,15 @@ class Activity < ActiveRecord::Base
     end
   end
 
+  def owner
+    user = User.find_by_id(self.user_id)
+    return user
+  end
+
+  def owner? (user)
+    self.user_id == user.id ? true : false
+  end
+
   private
     def self.followed_by(user)
       followed_ids = %(SELECT followed_id FROM relationships
