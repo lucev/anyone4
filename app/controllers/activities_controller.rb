@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   before_filter :authenticate, :only => [:create, :destroy]
+  require 'simple_time_select'
 
   def show
     @activity = Activity.find(params[:id])
@@ -9,6 +10,17 @@ class ActivitiesController < ApplicationController
 
   def create
     @activity  = current_user.activities.build(params[:activity])
+
+      #params from javascript calendar (calendrical)
+      params[:start_date].nil? or params[:start_date].empty? ? start_date = Time.now.strftime("%m/%d/%Y") :
+                                                               start_date = Date.strptime(params[:start_date], "%d/%m/%Y")
+      start_time = params[:start_time]
+      #params from HTML select form
+      unless params[:date].nil? and params[:time].nil?
+        start_date = params[:date]
+        start_time = params[:time][:"time(5i)"]
+      end
+    @activity.starts_at = "#{start_date} #{start_time}"
     if @activity.save
       flash[:success] = "Activity created!"
       redirect_to root_path

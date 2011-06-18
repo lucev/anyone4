@@ -41,6 +41,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    nbrew-simple_time_select (0.2.0)
     pg (0.9.0)
     polyglot (0.3.1)
     rack (1.2.2)
@@ -75,6 +76,7 @@ PLATFORMS
 DEPENDENCIES
   annotate-models (= 1.0.4)
   faker (= 0.3.1)
+  nbrew-simple_time_select (~> 0.2.0)
   pg
   rails (= 3.0.6)
   sqlite3-ruby

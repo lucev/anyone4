@@ -6,9 +6,24 @@
         <td><%= f.label :title, 'What' %></td>
         <td><%= f.text_field :title %></td>
       </tr>
-      <tr>
-        <td><%= f.label :starts_at, 'Time' %></td>
-        <td><%= f.datetime_select :starts_at %></td>
+      <tr id="date_noscript">
+        <td><%= f.label :starts_at, 'When' %></td>
+        <td>
+          <%= select_date Time.now %>
+          &nbsp;at&nbsp;
+          <%= time_select "time", "time", {
+                                             :simple_time_select => true,
+                                             :minute_interval => 30, :time_separator => ""}
+          %>
+          <%= hidden_field_tag :noscript, true %>
+        </td>
+      </tr>
+      <tr id="date_JavaScript" style="display: none">
+        <td><%= f.label :start_at, 'When' %></td>
+        <td>
+          <%= text_field_tag :start_date, nil, :placeholder => 'Today', :disabled => "disabled" %>
+          &nbsp;at&nbsp;
+          <%= text_field_tag :start_time, "#{Time.now.hour+1}:00", :disabled => "disabled" %></td>
       </tr>
       <tr>
         <td><%= f.label :location, 'Location' %></td>
@@ -23,5 +38,33 @@
   <div class="actions">
     <%= f.submit "Submit" %>
   </div>
+
+  <script type="text/javascript">
+    $(function(){
+        $('#start_time').calendricalTime({
+            usa: false,
+            isoTime: true,
+            defaultTime:  {hour: 12, minute: 30},
+            timeInterval: 30
+        });
+    $('#start_date').calendricalDate();
+    })
+  </script>
+  <script type="text/javascript">
+    document.getElementById('date_JavaScript').style.display = 'table-row';
+    document.getElementById('start_date').disabled=false;
+    document.getElementById('start_time').disabled=false;
+    document.getElementById('date_noscript').style.display = 'none';
+    document.getElementById('date_year').disabled=true;
+    document.getElementById('date_month').disabled=true;
+    document.getElementById('date_day').disabled=true;
+    document.getElementById('time_time_5i').disabled=true;
+    document.getElementById('time_time_1i').disabled=true;
+    document.getElementById('time_time_2i').disabled=true;
+    document.getElementById('time_time_3i').disabled=true;
+    document.getElementById('time_time_4i').disabled=true;
+  </script>
+
+
 <% end %>
 
