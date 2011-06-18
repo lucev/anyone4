@@ -66,5 +66,27 @@
   </script>
 
 
+<script type="text/javascript">
+var userAgent=navigator.userAgent;
+var mobile=/Mini/;
+
+if(userAgent.match(mobile)!=null){
+    document.getElementById('date_JavaScript').style.display = 'none';
+    document.getElementById('start_date').disabled=true;
+    document.getElementById('start_time').disabled=true;
+    document.getElementById('date_noscript').style.display = 'block';
+    document.getElementById('date_year').disabled=false;
+    document.getElementById('date_month').disabled=false;
+    document.getElementById('date_day').disabled=false;
+    document.getElementById('time_time_5i').disabled=false;
+    document.getElementById('time_time_1i').disabled=true;
+    document.getElementById('time_time_2i').disabled=true;
+    document.getElementById('time_time_3i').disabled=true;
+    document.getElementById('time_time_4i').disabled=true;
+}
+
+</script>
+
+
 <% end %>
 
