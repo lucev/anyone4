@@ -6,9 +6,6 @@ gem 'pg'
 gem "nbrew-simple_time_select", "~> 0.2.0"
 
 group :development do
-  gem 'annotate-models', '1.0.4'
-  gem 'faker', '0.3.1'
   gem 'sqlite3-ruby', :require => 'sqlite3'
-  gem 'annotate-models', '1.0.4'
 end
 
