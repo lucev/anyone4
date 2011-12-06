@@ -28,12 +28,10 @@ GEM
       activemodel (= 3.0.6)
       activesupport (= 3.0.6)
     activesupport (3.0.6)
-    annotate-models (1.0.4)
     arel (2.0.9)
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    faker (0.3.1)
     i18n (0.5.0)
     mail (2.2.15)
       activesupport (>= 2.3.6)
@@ -74,8 +72,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate-models (= 1.0.4)
-  faker (= 0.3.1)
   nbrew-simple_time_select (~> 0.2.0)
   pg
   rails (= 3.0.6)
