@@ -22,6 +22,7 @@ AnyoneFor::Application.routes.draw do
   match '/activities/attend', :to => 'activities#attend', :as => :activity_attend
   match '/activities/miss', :to => 'activities#miss', :as => :activity_miss
   match 'activities/create_comment', :to => 'activities#create_comment'
+  match '/fb_login', :to => 'sessions#fb_login'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
