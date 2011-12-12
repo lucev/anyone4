@@ -4,6 +4,10 @@ class ActivitiesController < ApplicationController
 
   def feed
     @feed = current_user.feed
+    @feed.each do |activity|
+      user = User.find_by_id(activity["user_id"])
+      activity["user_name"] = user.name
+    end
     respond_to do |format|
       format.json {render :json => @feed}
     end
