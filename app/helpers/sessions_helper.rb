@@ -25,6 +25,10 @@ module SessionsHelper
   def current_user?(user)
     user == current_user
   end
+  
+  def fb_user?
+    !current_user.facebook_id.nil?
+  end
 
   def authenticate
     deny_access unless signed_in?
