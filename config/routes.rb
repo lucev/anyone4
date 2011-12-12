@@ -7,6 +7,9 @@ AnyoneFor::Application.routes.draw do
       get :following, :followers
     end
   end
+  
+  match '/activities/feed', :to => 'activities#feed', :as => :activity_feed
+  
   resources :sessions, :only => [:new, :create, :destroy]
   resources :activities, :only => [:create, :destroy, :show]
   resources :relationships, :only => [:create, :destroy]
@@ -22,6 +25,7 @@ AnyoneFor::Application.routes.draw do
   match '/activities/attend', :to => 'activities#attend', :as => :activity_attend
   match '/activities/miss', :to => 'activities#miss', :as => :activity_miss
   match 'activities/create_comment', :to => 'activities#create_comment'
+  
   match '/login/facebook', :to => 'sessions#fb_login'
 
   # The priority is based upon order of creation:

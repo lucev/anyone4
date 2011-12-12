@@ -1,6 +1,13 @@
 class ActivitiesController < ApplicationController
-  before_filter :authenticate, :only => [:create, :destroy]
+  before_filter :authenticate, :only => [:feed, :create, :destroy]
   require 'simple_time_select'
+
+  def feed
+    @feed = current_user.feed
+    respond_to do |format|
+      format.json {render :json => @feed}
+    end
+  end
 
   def show
     @activity = Activity.find(params[:id])
