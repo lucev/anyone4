@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110524180307) do
+ActiveRecord::Schema.define(:version => 20111211235224) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(:version => 20110524180307) do
     t.datetime "updated_at"
   end
 
+  create_table "connections", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "contact_id"
+    t.boolean  "friend"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "participations", :force => true do |t|
     t.integer  "user_id"
     t.integer  "activity_id"
@@ -45,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20110524180307) do
     t.integer  "followed_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "friend_confirm"
   end
 
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
@@ -60,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20110524180307) do
     t.string   "encrypted_password"
     t.string   "salt"
     t.boolean  "admin",              :default => false
+    t.string   "facebook_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
