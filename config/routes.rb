@@ -1,5 +1,10 @@
 AnyoneFor::Application.routes.draw do
 
+
+  match '/friendships/confirm', :to => 'friendships#confirm', :as => :confirm
+
+  resources :friendships
+
   resources :comments
 
   resources :users do
@@ -27,6 +32,11 @@ AnyoneFor::Application.routes.draw do
   match 'activities/create_comment', :to => 'activities#create_comment'
   
   match '/login/facebook', :to => 'sessions#fb_login'
+  match '/login/accept_token', :to => 'sessions#accept_token'
+  match '/friends', :to => 'friendships#index', :as => :friends
+  match '/friendship_requests', :to => 'friendships#friendship_requests', :as => :requests
+  match '/request_friendship', :to => 'friendships#request_friendship',
+                               :as => :request_friendship
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
