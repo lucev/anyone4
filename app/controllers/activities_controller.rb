@@ -1,8 +1,24 @@
 class ActivitiesController < ApplicationController
   before_filter :authenticate, :only => [:feed, :create, :destroy]
   require 'simple_time_select'
+  require 'open-uri'
+  require 'json'
 
   def feed
+    if (!params[:access_token].nil? and !params[:expires].nil?)
+      access_token = 'access_token='+params[:access_token]+'&expires='+params[:expires]
+      facebook_user = JSON.parse(open("https://graph.facebook.com/me?#{access_token}").read)
+      @user = User.find_by_facebook_id(facebook_user["id"])
+      if @user.nil?
+        @user = User.new
+        @user.name = facebook_user["name"]
+        @user.facebook_id = facebook_user["id"]
+        @user.email = facebook_user["email"]
+        @user.save
+      end
+        current_user = @user           
+    end
+    
     @feed = current_user.feed
     @feed.each do |activity|
       user = User.find_by_id(activity["user_id"])
