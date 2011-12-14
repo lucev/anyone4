@@ -207,14 +207,14 @@ form.comment textarea {
 }
 
 
-table {
+#api table table {
   font-family: arial, sans-serif;
   font-size: 90%;
   margin:auto;
   padding: 2em;
 }
 
-td {
+#api_table td {
   border: solid 1px #ccc;
   border-collapse: collapse;
   padding: 0.3em 0.5em;
