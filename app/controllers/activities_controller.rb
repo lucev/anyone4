@@ -16,10 +16,9 @@ class ActivitiesController < ApplicationController
         @user.email = facebook_user["email"]
         @user.save
       end
-        current_user = @user           
     end
     
-    @feed = current_user.feed
+    @feed = @user.feed
     @feed.each do |activity|
       user = User.find_by_id(activity["user_id"])
       activity["user_name"] = user.name
