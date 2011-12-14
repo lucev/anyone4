@@ -37,6 +37,8 @@ AnyoneFor::Application.routes.draw do
   match '/friendship_requests', :to => 'friendships#friendship_requests', :as => :requests
   match '/request_friendship', :to => 'friendships#request_friendship',
                                :as => :request_friendship
+                               
+  match '/api', :to => "pages#api"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
