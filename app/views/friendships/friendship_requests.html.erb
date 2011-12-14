@@ -1,0 +1,6 @@
+<% unless @friendship_requests.nil? %>
+  <% @friendship_requests.each do |friendship_request| %>
+    <%= friendship_request.user.name %>
+    <%= link_to 'confirm', confirm_path(:friendship_id => friendship_request.id) %>
+  <% end %>
+<% end %>

@@ -30,6 +30,20 @@ class User < ActiveRecord::Base
 
   has_many :participations, :dependent => :destroy
   has_many :attendances, :through => :participations, :source => :activity
+  
+  has_many :friendships, :dependent => :destroy, :conditions => ['confirmed = ?', true]
+  has_many :friends, :through => :friendships
+  
+  has_many :friendship_requests, :dependent => :destroy, :conditions => ['confirmed = ?', false],
+                                 :class_name => 'Friendship',
+                                 :foreign_key => 'friend_id'
+  
+  has_many :reverse_friendships, :dependent => :destroy,
+                                 :class_name => 'Friendship',
+                                 :foreign_key => 'friend_id',
+                                 :conditions => ['confirmed = ?', true]
+                                 
+  has_many :reverse_friends, :through => :reverse_friendships, :source => :user
 
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -45,7 +59,7 @@ class User < ActiveRecord::Base
 #                       :length       => { :within => 6..40 }
 
 
-#  before_save :encrypt_password
+  before_save :encrypt_password
 
   # Return true if the user's password matches the submitted password.
   def has_password?(submitted_password)

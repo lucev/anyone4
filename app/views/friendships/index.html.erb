@@ -1,0 +1,13 @@
+<h1>Friends</h1>
+<ul>
+  <% current_user.friendships.each do |friendship| %>
+    <li>
+      <%= friendship.friend.name unless friendship.friend.nil? %>
+    </li>
+  <% end %>
+  <% current_user.reverse_friendships.each do |friendship| %>
+    <li>
+      <%= friendship.user.name unless friendship.friend.nil? %>
+    </li>
+  <% end %>
+</ul>

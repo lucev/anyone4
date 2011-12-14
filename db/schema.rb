@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111211235224) do
+ActiveRecord::Schema.define(:version => 20111212104031) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -33,12 +33,13 @@ ActiveRecord::Schema.define(:version => 20111211235224) do
     t.datetime "updated_at"
   end
 
-  create_table "connections", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "contact_id"
-    t.boolean  "friend"
+  create_table "friendships", :force => true do |t|
+    t.boolean  "requested"
+    t.boolean  "confirmed",  :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "friend_id"
   end
 
   create_table "participations", :force => true do |t|
@@ -53,7 +54,6 @@ ActiveRecord::Schema.define(:version => 20111211235224) do
     t.integer  "followed_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "friend_confirm"
   end
 
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"

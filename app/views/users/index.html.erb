@@ -3,7 +3,11 @@
 <%= will_paginate %>
 
 <ul class="users">
-  <%= render @users %>
+  <% @users.each do |user| %>
+    <li><%= user.name %>&nbsp;
+        <%= link_to 'add friend', request_friendship_path(:friend_id => user.id) %>
+    </li>
+  <% end %>
 </ul>
 
 <%= will_paginate %>
