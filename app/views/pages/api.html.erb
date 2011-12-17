@@ -1,0 +1,59 @@
+<div id="title">
+  <h3>developers API</h3>
+</div>
+<div id="api_table">
+  <table>
+    <tr>
+      <th class="resource">Resource</th>
+      <th>Content type</th>
+      <th>Parameters</th>    
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>GET /activities/feed.json</td>
+      <td>JSON</td>
+      <td>id<br/>
+          location<br/>
+          title<br/>
+          description<br/>
+          starts_at<br/>
+          user_id<br/>
+          user_name
+      </td>
+      <td>Receive all activities available for current user</td>
+    </tr>
+    <tr>
+      <td>GET /activities/:id.json</td>
+      <td>JSON</td>
+      <td>id<br/>
+          location<br/>
+          title<br/>
+          description<br/>
+          starts_at<br/>
+          user_id<br/>
+          user_name
+      </td>
+      <td>Receive activity with specific id</td>
+    </tr>    
+    <tr>
+      <td>POST /activities</td>
+      <td>JSON</td>
+      <td>id<br/>
+          location<br/>
+          title<br/>
+          description<br/>
+          starts_at<br/>
+          user_id<br/>
+      </td>
+      <td>Create new activity</td>
+    </tr>
+    <tr>
+      <td>POST /activities/:id/attend</td>
+      <td>JSON</td>
+      <td>id<br/>
+          user_id
+      </td>
+      <td>Attend to activity</td>
+    </tr>      
+  </table>
+</div>

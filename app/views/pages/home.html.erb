@@ -2,7 +2,7 @@
   <table class="front" summary="For signed-in users">
     <tr>
       <td class="main">
-        <h1 class="activity">What's up?</h1>
+        <h1 class="activity">What's your plan</h1>
         <%= render 'shared/activity_form' %>
       </td>
       <td class="sidebar round">
@@ -17,6 +17,6 @@
   <%= will_paginate @feed_items %>
 <% else %>
   <h1>Welcome to Anyone4?</h1>
-  <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+  <%= link_to "Sign in with Facebook!", 'https://www.facebook.com/dialog/oauth?client_id=109791605757634&redirect_uri=http://www.anyone4.com/login/facebook&scope=email', :class => "signup_button round" %>
 <% end %>
 

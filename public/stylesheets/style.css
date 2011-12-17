@@ -206,3 +206,24 @@ form.comment textarea {
   width: 20em;
 }
 
+
+#api_table table {
+  font-family: arial, sans-serif;
+  font-size: 90%;
+  margin:auto;
+  padding: 2em;
+}
+
+#api_table td {
+  border: solid 1px #ccc;
+  border-collapse: collapse;
+  padding: 0.3em 0.5em;
+}
+
+#title{
+  text-align: center;
+}
+
+.resource{
+  width: 200px;
+}
