@@ -15,7 +15,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @activities = @user.activities.paginate(:page => params[:page])
+    if current_user.friend_of? @user
+      @activities = @user.activities.paginate(:page => params[:page])
+    end
     @title = @user.name
   end
 

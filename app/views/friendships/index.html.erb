@@ -2,12 +2,16 @@
 <ul>
   <% current_user.friendships.each do |friendship| %>
     <li>
-      <%= friendship.friend.name unless friendship.friend.nil? %>
+      <% unless friendship.friend.nil? %>
+        <%= link_to friendship.friend.name, user_path(friendship.friend) %>
+      <% end %>
     </li>
   <% end %>
   <% current_user.reverse_friendships.each do |friendship| %>
     <li>
-      <%= friendship.user.name unless friendship.friend.nil? %>
+      <% unless friendship.friend.nil? %>
+        <%= link_to friendship.user.name, user_path(friendship.friend) %>
+      <% end %>
     </li>
   <% end %>
 </ul>

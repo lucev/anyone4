@@ -1,0 +1,5 @@
+<%= form_for current_user.friendships.build(:friend_id => @user.id),
+        :url => { :controller => "friendships", :action => "request_friendship" }, :remote => true do |f| %>
+  <div><%= f.hidden_field :friend_id %></div>
+  <div class="actions"><%= f.submit "Add friend" %></div>
+<% end %>

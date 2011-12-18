@@ -11,7 +11,7 @@ class Activity < ActiveRecord::Base
 
   default_scope :order => 'activities.created_at DESC'
 
-  scope :from_users_followed_by, lambda { |user| followed_by(user) }
+  scope :from_friends, lambda { |user| from_friends(user)}
 
   def attending? user
     if user.nil?
@@ -34,12 +34,14 @@ class Activity < ActiveRecord::Base
   end
 
   private
-    def self.followed_by(user)
-      followed_ids = %(SELECT followed_id FROM relationships
-                       WHERE follower_id = :user_id)
-      where("user_id IN (#{followed_ids}) OR user_id = :user_id",
-            { :user_id => user })
+   
+    def self.from_friends(user)
+      friend_ids = %(SELECT DISTINCT friend_id FROM friendships
+                       WHERE user_id = :user_id)
+      reverse_friend_ids = %(SELECT DISTINCT user_id FROM friendships
+                       WHERE friend_id = :user_id)
+      where("user_id IN (#{friend_ids}) OR user_id IN (#{reverse_friend_ids}) OR user_id = :user_id",
+        { :user_id => user}
+      )
     end
-
 end
-

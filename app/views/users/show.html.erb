@@ -4,8 +4,8 @@
       <h1>
         <%= @user.name %>
       </h1>
-      <%= render 'follow_form' if signed_in? %>
-      <% unless @user.activities.nil? or @user.activities.empty? %>
+      <%= render 'friend_form' if signed_in? %>
+      <% unless @activities.nil? or @activities.empty? %>
         <table class="activities" summary="User activities">
           <%= render @activities %>
         </table>

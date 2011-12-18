@@ -32,6 +32,10 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     @title = @activity.title
     @comment = Comment.new
+    unless @activity.owner.friend_of? current_user or @activity.owner? current_user
+      redirect_to root_path
+      flash[:error] = "You don't have permission for this action"
+    end
   end
 
   def create
