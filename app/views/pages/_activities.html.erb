@@ -1,6 +1,6 @@
 <table>
   <% @feed_items.each do |activity| %>
-    <% unless !activity.starts_at.nil? and activity.starts_at.past? %>
+    <% unless !activity.starts_at.nil? %>
       <tr>
         <td>
           <strong><%= link_to activity.title, activity %></strong><br/>
