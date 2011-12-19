@@ -7,10 +7,10 @@ class ActivitiesController < ApplicationController
   def feed
     if (!params[:access_token].nil? and !params[:expires].nil?)
       access_token = 'access_token='+params[:access_token]+'&expires='+params[:expires]
-      current_user = sign_in_with_token access_token
+      @user = sign_in_with_token access_token
     end
     
-    @feed = current_user.feed
+    @feed = @user.feed
     @feed.each do |activity|
       user = User.find_by_id(activity["user_id"])
       activity["user_name"] = user.name
