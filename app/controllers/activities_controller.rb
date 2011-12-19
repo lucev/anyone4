@@ -33,7 +33,7 @@ class ActivitiesController < ApplicationController
   def create
       unless (params[:access_token].nil? or params[:expires].nil?)
         access_token = 'access_token='+params[:access_token]+'&expires='+params[:expires]
-        current_user = sign_in_with_token access_token
+        @user = sign_in_with_token access_token
       end
 
       @activity  = current_user.activities.build(params[:activity])
