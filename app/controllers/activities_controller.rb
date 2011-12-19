@@ -90,6 +90,7 @@ class ActivitiesController < ApplicationController
   private
   
   def sign_in_with_token(access_token)
+    puts access_token
     facebook_user = JSON.parse(open("https://graph.facebook.com/me?#{access_token}").read)
       @user = User.find_by_facebook_id(facebook_user["id"])
       if @user.nil?
