@@ -59,11 +59,7 @@ class ActivitiesController < ApplicationController
   def destroy
   end
 
-  def attend
-    unless (params[:access_token].nil? or params[:expires].nil?)
-      access_token = 'access_token='+params[:access_token]+'&expires='+params[:expires]
-      current_user = sign_in_with_token access_token
-    end  
+  def attend 
     @activity = Activity.find_by_id(params[:activity_id])
     @activity.participants.push(current_user)
     respond_to do |format|
