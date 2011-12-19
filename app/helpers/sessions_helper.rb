@@ -44,20 +44,6 @@ module SessionsHelper
     clear_return_to
   end
 
-  def sign_in_with_token(access_token)
-    facebook_user = JSON.parse(open("https://graph.facebook.com/me?#{access_token}").read)
-    user = User.find_by_facebook_id(facebook_user["id"])
-    if user.nil?
-      user = User.new
-      user.name = facebook_user["name"]
-      user.facebook_id = facebook_user["id"]
-      user.email = facebook_user["email"]
-      user.save
-    end
-   sign_in user 
- end
-
-
   private
 
   def user_from_remember_token

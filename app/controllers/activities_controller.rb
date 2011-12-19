@@ -7,15 +7,7 @@ class ActivitiesController < ApplicationController
   def feed
     if (!params[:access_token].nil? and !params[:expires].nil?)
       access_token = 'access_token='+params[:access_token]+'&expires='+params[:expires]
-      facebook_user = JSON.parse(open("https://graph.facebook.com/me?#{access_token}").read)
-      @user = User.find_by_facebook_id(facebook_user["id"])
-      if @user.nil?
-        @user = User.new
-        @user.name = facebook_user["name"]
-        @user.facebook_id = facebook_user["id"]
-        @user.email = facebook_user["email"]
-        @user.save
-      end
+      sign_in_with_token access_token
     end
     
     @feed = @user.feed
@@ -93,6 +85,20 @@ class ActivitiesController < ApplicationController
       flash[:success] = "Comment added!"
       redirect_to activity_path(params[:comment][:activity_id])
   end
+  end
+  
+  private
+  
+  def sign_in_with_token(access_token)
+    facebook_user = JSON.parse(open("https://graph.facebook.com/me?#{access_token}").read)
+      @user = User.find_by_facebook_id(facebook_user["id"])
+      if @user.nil?
+        @user = User.new
+        @user.name = facebook_user["name"]
+        @user.facebook_id = facebook_user["id"]
+        @user.email = facebook_user["email"]
+        @user.save
+      end
   end
 end
 
