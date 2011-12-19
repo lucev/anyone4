@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
   def feed
     if (!params[:access_token].nil? and !params[:expires].nil?)
       access_token = 'access_token='+params[:access_token]+'&expires='+params[:expires]
-      sign_in_with_token access_token
+      @user = sign_in_with_token access_token
     end
     
     @feed = @user.feed
