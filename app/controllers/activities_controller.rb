@@ -39,7 +39,12 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity  = current_user.activities.build(params[:activity])
+      unless (params[:access_token].nil? or params[:expires].nil?)
+        access_token = 'access_token='+params[:access_token]+'&expires='+params[:expires]
+        sign_in_with_token access_token
+      end
+
+      @activity  = current_user.activities.build(params[:activity])
 
       #params from javascript calendar (calendrical)
       params[:start_date].nil? or params[:start_date].empty? ? start_date = Time.now.strftime("%m/%d/%Y") :
