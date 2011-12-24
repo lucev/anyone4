@@ -17,13 +17,18 @@ class FriendshipsController < ApplicationController
 
 
   def request_friendship
-    @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
-    if @friendship.save
-     flash[:notice] = "Sent friend request."
+    @user = User.find_by_id(params[:friendship][:friend_id])
+    if (!@user.nil? and !current_user.contacts.include? @user)
+      @friendship = current_user.friendships.build(:friend_id => @user.id)
+      if @friendship.save
+       flash[:notice] = "Sent friend request."
+      else
+        flash[:error] = "Unable to send friend request."
+      end    
     else
-      flash[:error] = "Unable to send friend request."
-    end    
-      redirect_to users_path    
+      flash[:notice] = "Already sent friend request"
+    end
+    redirect_to users_path    
   end
   
   def confirm

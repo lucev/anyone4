@@ -5,8 +5,13 @@
 <ul class="users">
   <% @users.each do |user| %>
     <li><%= link_to user.name, user_path(user) %>&nbsp;
-        <% unless user.friend_of? current_user or current_user? user %>
-          <%= link_to 'add friend', request_friendship_path(:friend_id => user.id) %>
+        <% unless @current_user_contacts.include? user %>
+          <%= form_for current_user.friendships.build(:friend_id => user.id),
+              :url => { :controller => "friendships", :action => "request_friendship" },
+              :remote => true do |f| %>
+              <div><%= f.hidden_field :friend_id %></div>
+              <div class="actions"><%= f.submit "Add friend" %></div>
+          <% end %>
         <% end %>
     </li>
   <% end %>

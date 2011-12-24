@@ -1,7 +1,11 @@
 <% unless current_user?(@user) %>
   <div id="friend_form">
-  <% if current_user.friend_of?(@user) %>
-    <%= render 'unfriend' %>
+  <% if current_user.contacts.include? @user %>
+    <% if current_user.friend_of?(@user) %>
+      <%= render 'unfriend' %>
+    <% else %>
+      <%= "sent friend request" %>
+    <% end %>
   <% else %>
     <%= render 'friend' %>
   <% end %>

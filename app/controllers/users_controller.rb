@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def index
     @title = "All users"
     @users = User.paginate(:page => params[:page], :order => 'name asc')
+    @current_user_contacts = current_user.contacts
   end
 
   def show

@@ -18,15 +18,6 @@ class User < ActiveRecord::Base
 
   has_many :activities, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-#  has_many :relationships, :foreign_key => "follower_id",
-#                           :dependent => :destroy
-#  has_many :following, :through => :relationships, :source => :followed
-
-#  has_many :reverse_relationships, :foreign_key => "followed_id",
-#                                   :class_name => "Relationship",
-#                                   :dependent => :destroy
-
-#  has_many :followers, :through => :reverse_relationships, :source => :follower
 
   has_many :participations, :dependent => :destroy
   has_many :attendances, :through => :participations, :source => :activity
@@ -97,8 +88,21 @@ class User < ActiveRecord::Base
     self.friends.include? user or self.reverse_friends.include? user
   end
   
-  def friendship_requested? user
-    self.friendship_requests.include? user
+  def involving_friendships
+    Friendship.including self
+  end
+  
+  def contacts
+    contacts = Array.new
+    involving_friendships = self.involving_friendships
+    involving_friendships.each do |friendship|
+      if friendship.user_id == self.id
+       contacts.push friendship.friend
+      else
+       contacts.push friendship.user
+      end
+    end
+    return contacts
   end
 
   private

@@ -37,9 +37,9 @@ class Activity < ActiveRecord::Base
    
     def self.from_friends(user)
       friend_ids = %(SELECT DISTINCT friend_id FROM friendships
-                       WHERE user_id = :user_id)
+                       WHERE user_id = :user_id AND confirmed = 't')
       reverse_friend_ids = %(SELECT DISTINCT user_id FROM friendships
-                       WHERE friend_id = :user_id)
+                       WHERE friend_id = :user_id AND confirmed = 't')
       where("user_id IN (#{friend_ids}) OR user_id IN (#{reverse_friend_ids}) OR user_id = :user_id",
         { :user_id => user}
       )
