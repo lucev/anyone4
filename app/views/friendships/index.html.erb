@@ -3,7 +3,7 @@
   <% current_user.friendships.each do |friendship| %>
     <li>
       <% unless friendship.friend.nil? %>
-        <%= image_tag(friednship.friend.get_pic_square) unless
+        <%= image_tag(friendship.friend.get_pic_square) unless
               friendship.friend.get_pic_square.empty? %>
         &nbsp;
         <%= link_to friendship.friend.name, user_path(friendship.friend) %>
