@@ -13,6 +13,9 @@
 
 class User < ActiveRecord::Base
 
+  require 'open-uri'
+  require 'json'
+
   attr_accessor :password
   attr_accessible :name, :email, :location, :password, :password_confirmation
 
@@ -103,11 +106,13 @@ class User < ActiveRecord::Base
     end
     return contacts
   end
-    
+
   @pic_square = String.new
-  
-  def pic_square
-    return @pic_square
+     
+  def get_pic_square
+    if @pic_square.empty?
+      data = JSON.parse(open("https://graph.facebook.com/fql?q=SELECT+pic_square+FROM+user+WHERE+uid=#{self.facebook_id}").read)
+      @pic_square = data['pic_square']
   end
   
   def set_pic_square string
