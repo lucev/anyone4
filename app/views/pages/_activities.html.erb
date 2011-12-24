@@ -3,13 +3,14 @@
     <% unless !activity.starts_at.nil? and activity.starts_at.past? %>
       <tr>
         <td>
-          <%= image_tag("#{activity.user.get_pic_square}") %>
+          <%= image_tag(activity.user.get_pic_square, :class => 'pic_square') unless 
+                activity.user.get_pic_square.empty? %>
         </td>
         <td>
           <strong><%= link_to activity.title, activity %></strong><br/>
           <%= link_to activity.owner.name, activity.owner %><br/>
           <% unless activity.starts_at.nil? %>
-            <%= activity.starts_at.strftime("%c") %><br/>
+            <%= activity.starts_at.strftime("%A, %h %e at %k:%M") %><br/>
           <% end %>
           <%= activity.location %><br/>
         </td>

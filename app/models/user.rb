@@ -110,8 +110,11 @@ class User < ActiveRecord::Base
   def get_pic_square
     @pic_square = String.new if @pic_square.nil?
     if @pic_square.empty?
-      response = JSON.parse(open("https://graph.facebook.com/fql?q=SELECT+pic_square+FROM+user+WHERE+uid=#{self.facebook_id}").read)
-      @pic_square = response['data'][0]['pic_square']
+      begin
+        response = JSON.parse(open("https://graph.facebook.com/fql?q=SELECT+pic_square+FROM+user+WHERE+uid=#{self.facebook_id}").read)
+        @pic_square = response['data'][0]['pic_square']
+      rescue
+      end
     end
     return @pic_square
   end
