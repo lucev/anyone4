@@ -18,7 +18,7 @@ class FriendshipsController < ApplicationController
 
   def request_friendship
     @user = User.find_by_id(params[:friendship][:friend_id])
-    if (!@user.nil? and !current_user.contacts.include? @user)
+    if (!@user.nil? and !current_user.contacts.include? @user and current_user != @user)
       @friendship = current_user.friendships.build(:friend_id => @user.id)
       if @friendship.save
         if RAILS_ENV == 'development'
