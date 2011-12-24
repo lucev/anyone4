@@ -4,7 +4,9 @@
 
 <ul class="users">
   <% @users.each do |user| %>
-    <li><%= link_to user.name, user_path(user) %>&nbsp;
+    <li><%= image_tag(user.get_pic_square) unless user.get_pic_square.empty? %>
+        &nbsp;
+        <%= link_to user.name, user_path(user) %>&nbsp;
         <% unless @current_user_contacts.include? user or current_user == user %>
           <%= form_for current_user.friendships.build(:friend_id => user.id),
               :url => { :controller => "friendships", :action => "request_friendship" },
