@@ -106,8 +106,6 @@ class User < ActiveRecord::Base
     end
     return contacts
   end
-
-  @pic_square = String.new
      
   def get_pic_square
     @pic_square = String.new if @pic_square.nil?
@@ -115,6 +113,7 @@ class User < ActiveRecord::Base
       data = JSON.parse(open("https://graph.facebook.com/fql?q=SELECT+pic_square+FROM+user+WHERE+uid=#{self.facebook_id}").read)
       @pic_square = data['pic_square']
     end
+    return @pic_square
   end
   
   def set_pic_square string
