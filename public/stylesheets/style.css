@@ -1,6 +1,6 @@
 /* colors coffee: #E6CA8E cream: #E6CA8E */
 
-body {background: #EEE; color: #080602;
+body {background: #EEE; color: #111;
       background-image: url('/images/background_snow.jpg');
       background-position: center top;
       background-repeat: no-repeat;
@@ -8,7 +8,10 @@ body {background: #EEE; color: #080602;
 
 .container {width: 45em; margin: auto;}
 
-nav {float: right; background-color: #DDD;}
+a {color: #042b41;}
+a:visited {color: #042b41;}
+
+nav {float: right; background-color: #dee3e9;}
 
 nav ul li {
   list-style-type: none;
@@ -26,11 +29,11 @@ nav ul li a {
   padding: 0 0.1em;
   font-weight: bold;
   text-decoration:none;
-  color: #190B00;
+  color: #111;
 }
 
 nav ul li a:visited {
-  color: #190B00;
+  color: #111;
 }
 
 nav ul li a:hover {
@@ -54,8 +57,8 @@ a.signup_button {
   display: block;
   text-align: center;
   width: 8em;
-  color: #333;
-  background: #190B00;
+  color: #dee3e9;
+  background: #5790ab;
   font-size: 150%;
   font-weight: bold;
   padding: 1em;
