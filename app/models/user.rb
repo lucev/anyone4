@@ -36,7 +36,6 @@ class User < ActiveRecord::Base
                                  
   has_many :reverse_friends, :through => :reverse_friendships, :source => :user
 
-
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name, :presence   => true
@@ -103,6 +102,16 @@ class User < ActiveRecord::Base
       end
     end
     return contacts
+  end
+    
+  @pic_square = String.new
+  
+  def pic_square
+    return @pic_square
+  end
+  
+  def set_pic_square string
+    @pic_square = string
   end
 
   private
