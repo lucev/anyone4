@@ -113,6 +113,7 @@ class User < ActiveRecord::Base
     if @pic_square.empty?
       data = JSON.parse(open("https://graph.facebook.com/fql?q=SELECT+pic_square+FROM+user+WHERE+uid=#{self.facebook_id}").read)
       @pic_square = data['pic_square']
+    end
   end
   
   def set_pic_square string
