@@ -3,7 +3,7 @@
     <% unless !activity.starts_at.nil? and activity.starts_at.past? %>
       <tr>
         <td>
-          <%= image_tag("#{activity.user.pic_square}")
+          <%= image_tag("#{activity.user.pic_square}") %>
         </td>
         <td>
           <strong><%= link_to activity.title, activity %></strong><br/>
