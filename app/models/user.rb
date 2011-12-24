@@ -13,6 +13,9 @@
 
 class User < ActiveRecord::Base
 
+  require 'open-uri'
+  require 'json'
+
   attr_accessor :password
   attr_accessible :name, :email, :location, :password, :password_confirmation
 
@@ -35,7 +38,6 @@ class User < ActiveRecord::Base
                                  :conditions => ['confirmed = ?', true]
                                  
   has_many :reverse_friends, :through => :reverse_friendships, :source => :user
-
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -103,6 +105,22 @@ class User < ActiveRecord::Base
       end
     end
     return contacts
+  end
+     
+  def get_pic_square
+    @pic_square = String.new if @pic_square.nil?
+    if @pic_square.empty?
+      begin
+        response = JSON.parse(open("https://graph.facebook.com/fql?q=SELECT+pic_square+FROM+user+WHERE+uid=#{self.facebook_id}").read)
+        @pic_square = response['data'][0]['pic_square']
+      rescue
+      end
+    end
+    return @pic_square
+  end
+  
+  def set_pic_square string
+    @pic_square = string
   end
 
   private

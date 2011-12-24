@@ -8,6 +8,8 @@ body {background: #EEE; color: #111;
 
 .container {width: 45em; margin: auto;}
 
+li {list-style: none;}
+
 a {color: #042b41;}
 a:visited {color: #042b41;}
 
@@ -240,3 +242,5 @@ form.comment textarea {
 .resource{
   width: 200px;
 }
+
+.pic_square{ }
