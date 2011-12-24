@@ -44,8 +44,9 @@ nav ul li a:hover {
 #header {height: 4em;}
 
 #section {margin-top: 0.3em; background-color: #FFF; padding: 1em;
-      opacity:0.8;
-  filter:alpha(opacity=70);}
+  opacity:0.9;
+  filter:alpha(opacity=90);
+}
 
 .round {
   -moz-border-radius:    0.4em;
