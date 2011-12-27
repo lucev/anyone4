@@ -6,6 +6,8 @@ class Friendship < ActiveRecord::Base
   
   scope :including, lambda {|user| including(user)}
   
+  before_save :notify
+  
   private
     def self.including(user)
       user_ids = %(SELECT DISTINCT friend_id FROM friendships
@@ -15,5 +17,10 @@ class Friendship < ActiveRecord::Base
       where("user_id IN (#{user_ids}) OR user_id IN (#{friend_ids}) OR user_id = :user_id",
         { :user_id => user}
       )      
+    end
+    
+    def notify
+      UserMailer.friendship_request(self.friend, self.user).deliver if
+        self.friend.friend_notification
     end
 end

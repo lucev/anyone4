@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>Dear <%= @user.name %>,</h3>
+    <p>
+      <%= @friend.name %> added you as friend.
+    </p>
+    <p>
+      To confirm <%= @friend.name %> as your friend please follow this url <br/>
+      <%= @url %>
+    </p>
+    <p>Anyone4 team</p>
+    <p style="font-size:11px"><%= link_to 'Unsubscribe', edit_user_url(@user) %> from this mailing list.</p>
+  </body>
+</html>
