@@ -20,10 +20,6 @@ class FriendshipsController < ApplicationController
     if (!@user.nil? and !current_user.contacts.include? @user and current_user != @user)
       @friendship = current_user.friendships.build(:friend_id => @user.id)
       if @friendship.save
-        if RAILS_ENV == 'development'
-            UserMailer.friendship_request(@user, current_user).deliver unless
-                @user.friend_notification == false
-        end
         flash[:notice] = "Sent friend request."
       else
         flash[:error] = "Unable to send friend request."
