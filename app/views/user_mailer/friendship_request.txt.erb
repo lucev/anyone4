@@ -5,3 +5,5 @@ Dear <%= @user.name %>,
 To confirm <%= @friend.name %> as your friend please follow this url <%= @url %>.
 
 Anyone4 team
+
+<%= link_to 'Unsubscribe', edit_user_path(@user) %> from this mailing list.

@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   require 'json'
 
   attr_accessor :password
-  attr_accessible :name, :email, :location, :password, :password_confirmation
+  attr_accessible :name, :email, :location, :password, :password_confirmation,
+                  :friend_notification, :activity_notification, :comment_notification
 
   has_many :activities, :dependent => :destroy
   has_many :comments, :dependent => :destroy

@@ -1,26 +1,19 @@
-<h1>Edit user</h1>
+<h1>Configure email notifications</h1>
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
+  <h3>Receive email when:</h3>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.check_box :friend_notification %>
+    <%= f.label 'someone send you friend request' %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.check_box :activity_notification %> 
+    <%= f.label 'friend creates new activity' %>
   </div>
   <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%#= f.label :password_confirmation, "Confirmation" %><br />
-    <%#= f.password_field :password_confirmation %>
+    <%= f.check_box :comment_notification %>
+    <%= f.label 'someone comment activities you attend' %>
   </div>
   <div class="actions">
     <%= f.submit "Update" %>
