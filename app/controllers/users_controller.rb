@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(:friend_notification => params[:user][:friend_notification],
                                :activity_notification => params[:user][:activity_notification],
-                               :comment_notification => params[:comment_notification])
+                               :comment_notification => params[:user][:comment_notification])
       flash[:success] = "Profile updated."
       redirect_to @user
     else
