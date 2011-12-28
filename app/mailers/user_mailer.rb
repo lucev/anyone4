@@ -9,4 +9,12 @@ class UserMailer < ActionMailer::Base
     mail(:to => user.email, :subject => "[Anyone4] " + friend.name + " added you as friend")
   end
   
+  def activity_created(user, activity_owner, activity)
+    @user = user
+    @activity_owner = activity_owner    
+    @activity = activity
+    
+    mail(:to => user.email, :subject => "[Anyone4] " + activity.title)
+  end
+  
 end

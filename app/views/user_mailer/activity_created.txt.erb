@@ -1,0 +1,10 @@
+<%= @activity_owner.name %> suggests <%= @activity.title %>
+<% unless @activity.location.nil? %>
+  in <%= @activity.location %>
+<% end %>
+  at <%= @activity.starts_at.strftime("%A, %h %e at %k:%M") %>
+
+More details:
+<%= link_to activity_url(@activity), activity_url(@activity) %>
+
+<%= link_to 'Unsubscribe', edit_user_url(@user) %> from this mailing list.

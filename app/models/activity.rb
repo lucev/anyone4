@@ -5,6 +5,8 @@ class Activity < ActiveRecord::Base
   has_many :participations, :dependent => :destroy
   has_many :participants, :through => :participations, :source => :user
   has_many :comments, :dependent => :destroy
+  
+  after_save :notify
 
   validates :title, :presence => true, :length => { :maximum => 60 }
   validates :user_id, :presence => true
@@ -43,5 +45,16 @@ class Activity < ActiveRecord::Base
       where("user_id IN (#{friend_ids}) OR user_id IN (#{reverse_friend_ids}) OR user_id = :user_id",
         { :user_id => user}
       )
+    end
+    
+    def notify
+      self.owner.friends.each do |user|
+        UserMailer.activity_created(user, self.owner, self).deliver if
+          user.activity_notification
+      end
+      self.owner.reverse_friends.each do |user|
+        UserMailer.activity_created(user, self.owner, self).deliver if
+          user.activity_notification
+      end
     end
 end

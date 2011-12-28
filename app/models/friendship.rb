@@ -6,7 +6,7 @@ class Friendship < ActiveRecord::Base
   
   scope :including, lambda {|user| including(user)}
   
-  before_save :notify
+  after_create :notify
   
   private
     def self.including(user)

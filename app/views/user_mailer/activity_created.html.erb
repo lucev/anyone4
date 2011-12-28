@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p><%= @activity_owner.name %> suggests <%= @activity.title %>
+       <% unless @activity.location.nil? %>
+         in <%= @activity.location %>
+       <% end %>
+       at <%= @activity.starts_at.strftime("%A, %h %e at %k:%M") %>
+    </p>
+    <p>More details:<br/>
+       <%= link_to activity_url(@activity), activity_url(@activity) %>
+    </p>
+    <p style="font-size:11px"><%= link_to 'Unsubscribe', edit_user_url(@user) %> from this mailing list.</p>
+  </body>
+</html>
