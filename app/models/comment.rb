@@ -20,7 +20,7 @@ class Comment < ActiveRecord::Base
         end            
       end
       if self.user != self.activity.owner
-        UserMailer.comment_created(self.user, self).deliver
+        UserMailer.comment_created(self.activity.owner, self).deliver
       end
     end
 end
