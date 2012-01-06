@@ -6,7 +6,7 @@ class UserMailer < ActionMailer::Base
     @friend = friend
     @url = "http://www.anyone4.com/friendship_requests"
     
-    mail(:to => user.email, :subject => "[Anyone4] " + friend.name + " added you as friend")
+    mail(:to => user.email, :subject => friend.name + " added you as friend")
   end
   
   def activity_created(user, activity_owner, activity)
@@ -14,14 +14,14 @@ class UserMailer < ActionMailer::Base
     @activity_owner = activity_owner    
     @activity = activity
     
-    mail(:to => user.email, :subject => "[Anyone4] " + activity.title)
+    mail(:to => user.email, :subject => activity.title)
   end
   
   def comment_created(user, comment)
     @user = user
     @comment = comment
     
-    mail(:to => user.email, :subject =>"[Anyone4] " + comment.author.name + " commented activity " + 
+    mail(:to => user.email, :subject => comment.author.name + " commented activity " + 
     comment.activity.title)
   end
   
