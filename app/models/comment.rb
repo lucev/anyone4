@@ -19,7 +19,7 @@ class Comment < ActiveRecord::Base
           UserMailer.comment_created(user, self).deliver
         end            
       end
-      if self.user != self.activity.owner
+      if self.user != self.activity.owner and self.activity.owner.comment_notification
         UserMailer.comment_created(self.activity.owner, self).deliver
       end
     end
