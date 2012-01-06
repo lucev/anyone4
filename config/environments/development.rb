@@ -30,8 +30,8 @@ AnyoneFor::Application.configure do
   :address              => "smtp.gmail.com",
   :port                 => 587,
   :domain               => 'anyone4.com',
-  :user_name            => '<user_name>',
-  :password             => '<password>',
+  :user_name            => 'lucev.ivan',
+  :password             => '90841903',
   :authentication       => 'plain',
   :enable_starttls_auto => true  }
 end

@@ -1,0 +1,7 @@
+<%= @comment.owner.name %> commented <%= @comment.activity.title %>
+<%= @comment.content %>
+
+More details:
+<%= link_to activity_url(@comment.activity), activity_url(@comment.activity) %>
+
+<%= link_to 'Unsubscribe', edit_user_url(@user) %> from this mailing list.
