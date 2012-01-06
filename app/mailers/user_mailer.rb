@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @comment = comment
     
-    mail(:to => user.email, :subject => "[Anyone4] " + comment.author.name + " commented activity" + 
+    mail(:to => user.email, :subject =>"[Anyone4] " + comment.author.name + " commented activity " + 
     comment.activity.title)
   end
   
