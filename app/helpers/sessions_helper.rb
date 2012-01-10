@@ -42,6 +42,7 @@ module SessionsHelper
     rescue
       deny_access unless signed_in?
     end
+    redirect_to(session[:return_to])
   end
 
   def deny_access
