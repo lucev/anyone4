@@ -37,7 +37,7 @@ module SessionsHelper
   def authenticate
     unless signed_in?
       fb_sign_in
-      redirect_to(session[:return_to])
+      redirect_to(session[:return_to] || root_path)
     end
   end
 
