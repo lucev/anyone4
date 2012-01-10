@@ -247,3 +247,7 @@ form.comment textarea {
 #time_time_5i {
   width: 7em;
 }
+
+td.time_select {
+  display: inline;
+}

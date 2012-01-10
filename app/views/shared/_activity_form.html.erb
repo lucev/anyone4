@@ -8,7 +8,7 @@
       </tr>
       <tr id="date_noscript">
         <td><%= f.label :starts_at, 'When' %></td>
-        <td>
+        <td class="time_select">
           <%= select_date Time.now %>
           <br/>at<br/>
           <%= time_select "time", "time", {
