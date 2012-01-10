@@ -37,6 +37,7 @@ module SessionsHelper
   def authenticate
     begin
       unless signed_in?
+        session[:return_to] ||= request.referer
         redirect_to facebook_login_path
       end
     rescue
