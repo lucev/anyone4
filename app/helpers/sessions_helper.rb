@@ -29,14 +29,24 @@ module SessionsHelper
   def fb_user?
     !current_user.facebook_id.nil?
   end
+  
+  def facebook_login_path
+    'https://www.facebook.com/dialog/oauth?client_id=109791605757634&redirect_uri=http://www.anyone4.com/login/facebook&scope=email'
+  end
 
   def authenticate
-    deny_access unless signed_in?
+    begin
+      unless signed_in?
+        redirect_to facebook_login_path
+      end
+    rescue
+      deny_access unless signed_in?
+    end
   end
 
   def deny_access
     store_location
-    redirect_to signin_path, :notice => "Please sign in to access this page."
+    redirect_to root_path, :notice => "Please sign in to access this page."
   end
 
   def redirect_back_or(default)
