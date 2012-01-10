@@ -35,15 +35,7 @@ module SessionsHelper
   end
 
   def authenticate
-    begin
-      unless signed_in?
-        session[:return_to] ||= request.referer
-        redirect_to facebook_login_path
-      end
-    rescue
-      deny_access unless signed_in?
-    end
-    redirect_to(session[:return_to])
+    fb_sign_in unless signed_in?
   end
 
   def deny_access
@@ -54,6 +46,15 @@ module SessionsHelper
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
     clear_return_to
+  end
+  
+  def fb_sign_in
+    begin
+      store_location
+      redirect_to facebook_login_path
+    rescue
+      deny_access
+    end
   end
 
   private
