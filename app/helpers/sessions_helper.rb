@@ -35,7 +35,10 @@ module SessionsHelper
   end
 
   def authenticate
-    fb_sign_in unless signed_in?
+    unless signed_in?
+      fb_sign_in
+      redirect_to(session[:return_to])
+    end
   end
 
   def deny_access
