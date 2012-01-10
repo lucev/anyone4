@@ -234,12 +234,16 @@ form.comment textarea {
   padding: 0.3em 0.5em;
 }
 
-#title{
+#title {
   text-align: center;
 }
 
-.resource{
+.resource {
   width: 200px;
 }
 
-.pic_square{ }
+.pic_square { }
+
+#time_time_5i {
+  width: 30%;
+}

@@ -10,7 +10,7 @@
         <td><%= f.label :starts_at, 'When' %></td>
         <td>
           <%= select_date Time.now %>
-          &nbsp;at&nbsp;
+          <br/>at<br/>
           <%= time_select "time", "time", {
                                              :simple_time_select => true,
                                              :minute_interval => 30, :time_separator => ""},
