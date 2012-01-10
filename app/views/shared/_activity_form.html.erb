@@ -13,7 +13,8 @@
           &nbsp;at&nbsp;
           <%= time_select "time", "time", {
                                              :simple_time_select => true,
-                                             :minute_interval => 30, :time_separator => ""}
+                                             :minute_interval => 30, :time_separator => ""},
+                                          {  :selected => Time.now}
           %>
           <%= hidden_field_tag :noscript, true %>
         </td>
