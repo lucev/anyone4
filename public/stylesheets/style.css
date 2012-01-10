@@ -244,10 +244,7 @@ form.comment textarea {
 
 .pic_square { }
 
-#time_time_5i {
-  width: 7em;
-}
-
-td.time_select {
-  display: inline;
-}
+#time_time_1i {width: 7em;}
+#time_time_2i {width: 7em;}
+#time_time_3i {width: 7em;}
+#time_time_5i {width: 7em;}
