@@ -24,7 +24,7 @@
 <% unless @activity.participants.nil? or @activity.participants.empty? %>
   <p>Already confirmed</p>
   <% @activity.participants.each do |participant| %>
-    <%= image_tag(participant.get_pic_square, :class => "tiny") unless
+    <%= image_tag(participant.get_pic_square, :class => "small") unless
           participant.get_pic_square.empty? %>
         &nbsp;
     <%= link_to participant.name, participant %><br/>
