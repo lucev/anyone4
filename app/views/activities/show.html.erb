@@ -1,7 +1,10 @@
 <% if @activity.owner? current_user %>
   <p>You suggested</p>
 <% else %>
-  <p><%= link_to @activity.owner.name, @activity.owner %>&nbsp;suggested</p>
+  <p><%= image_tag(@activity.owner.get_pic_square, :class => "small") unless
+          @activity.owner.get_pic_square.empty? %>
+        &nbsp;
+    <%= link_to @activity.owner.name, @activity.owner %>&nbsp;suggested</p>
 <% end %>
 <h1><%= @activity.title %></h1>
 <% unless @activity.starts_at.nil? %>
@@ -21,6 +24,9 @@
 <% unless @activity.participants.nil? or @activity.participants.empty? %>
   <p>Already confirmed</p>
   <% @activity.participants.each do |participant| %>
+    <%= image_tag(participant.get_pic_square, :class => "tiny") unless
+          participant.get_pic_square.empty? %>
+        &nbsp;
     <%= link_to participant.name, participant %><br/>
   <% end %>
 <% end %>
@@ -29,6 +35,9 @@
   <div>
     <p>Comments</p>
     <% @activity.comments.each do |comment| %>
+      <%= image_tag(comment.author.get_pic_square, :class => "small") unless
+          comment.author.get_pic_square.empty? %>
+        &nbsp;    
       <%= link_to comment.author.name, comment.author %><br/>
       <%= comment.content %><br/>
     <% end %>

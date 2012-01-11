@@ -244,6 +244,14 @@ form.comment textarea {
 
 .pic_square { }
 
+.tiny {
+  width: 25px;
+}
+
+.small {
+  width: 28px;
+}
+
 #date_year {width: 7em;}
 #date_month {width: 7em;}
 #date_day {width: 7em;}
