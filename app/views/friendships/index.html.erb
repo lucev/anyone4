@@ -15,7 +15,7 @@
       <% unless friendship.friend.nil? %>
         <%= image_tag(friendship.user.get_pic_square) unless friendship.user.get_pic_square.empty? %>
         &nbsp;
-        <%= link_to friendship.user.name, user_path(friendship.friend) %>
+        <%= link_to friendship.user.name, user_path(friendship.user) %>
       <% end %>
     </li>
   <% end %>
