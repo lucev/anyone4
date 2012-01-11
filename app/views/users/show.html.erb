@@ -1,6 +1,9 @@
 <table class="profile" summary="Profile information">
   <tr>
     <td class="main">
+        <%= image_tag(@user.get_pic_square) unless
+          @user.get_pic_square.empty? %>
+        &nbsp;
       <h1>
         <%= @user.name %>
       </h1>
