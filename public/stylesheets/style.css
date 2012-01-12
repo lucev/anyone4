@@ -4,6 +4,8 @@ body {background: #EEE; color: #111;
       background-image: url('/images/background_snow.jpg');
       background-position: center top;
       background-repeat: no-repeat;
+      font-family: trebuchet MS, helvetica, arial, sans-serif;
+      font-size: 90%;
       }
 
 .container {width: 45em; margin: auto;}
