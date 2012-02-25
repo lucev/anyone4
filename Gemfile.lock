@@ -30,6 +30,8 @@ GEM
     activesupport (3.0.6)
     arel (2.0.9)
     builder (2.1.2)
+    configatron (2.9.0)
+      yamler (>= 0.1.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.5.0)
@@ -67,11 +69,13 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.26)
     will_paginate (3.0.pre2)
+    yamler (0.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  configatron
   nbrew-simple_time_select (~> 0.2.0)
   pg
   rails (= 3.0.6)
