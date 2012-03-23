@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_filter :authenticate
+#  before_filter :authenticate
   require 'simple_time_select'
   require 'open-uri'
   require 'json'
